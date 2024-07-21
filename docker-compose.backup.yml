@@ -1,0 +1,13 @@
+version: "3"
+services:
+  # docker build -t node-app-image .
+  # docker run --env-file ./.env -v ${pwd}:/app:ro -v /app/node_modules -d -p 8000:8000 --name node-app node-app-image
+  node-app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    env_file:
+      - ./.env
